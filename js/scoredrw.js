@@ -14,7 +14,7 @@ function SCOREDisplay(parent, level) {
 	//var slashSymbol = this.drawSlash();
 	//var coinCount = this.container.appendChild(this.drawCoinCount());
 
-	this.drawScoreFrame();
+	//this.drawScoreFrame();
 }
 
 SCOREDisplay.prototype.drawLevelSymbol = function() {
