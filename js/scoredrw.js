@@ -103,6 +103,7 @@ BitMap.prototype.drawBitmap = function (classname) {
 function Numeral(numbers, parent, classname){
 	this.digit = parent.appendChild(elt("div", classname));
 	this.digitPixelRows = numbers[0].length;
+	this.digit.style.maxHeight = this.digitPixelRows * scoreScale + "px";
 	this.numbersSprite = collapse(numbers);
 	console.log(this.numbersSprite);
 	this.numStrip = new BitMap(this.numbersSprite, this.digit, "s-num-strip");

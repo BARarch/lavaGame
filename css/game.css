@@ -22,13 +22,13 @@
 
 .s-left-digit       { float:left; 
 					  margin:4px;	
-					  max-height: 20px;	
+					  /*max-height: 20px;*/	
 					  position: relative;
 					  overflow: hidden;}
 
 .s-right-digit       { float:left; 
 					  margin:4px 4px 4px 0;	
-					  max-height: 20px;	
+					  /*max-height: 20px;	*/
 					  position: relative;
 					  overflow: hidden;}
 
@@ -39,7 +39,7 @@
 
 
 
-			
+
 
 .background td	{ padding: 0;						}
 .lava			{ background: rgb(255, 100, 100);	}
