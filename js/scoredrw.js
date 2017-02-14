@@ -5,7 +5,7 @@ function SCOREDisplay(parent, level) {
 	this.level = level;
 	
 	var levelSymbol = this.drawLevelSymbol();
-	//var levelNum = this.container.appendChild(this.drawLevelCount());
+	var levelNum = this.drawLevelCount();
 	//var heart = this.drawHeart();
 	//var xSymbol = this.drawX();
 	//var lifeNum = this.container.appendChild(this.drawLifeNum());
@@ -21,11 +21,11 @@ SCOREDisplay.prototype.drawLevelSymbol = function() {
 	return new BitMap(LEV, this.container, "s-level-symbol");
 };
 
-/*
-SCOREDisplay.prototype.drawLevelCount = function() {
-	return new Numeral2(NUMERALS, "s-level-count");
-};
 
+SCOREDisplay.prototype.drawLevelCount = function() {
+	return new Numeral2(NUMERALS, this.container, "s-level-count");
+};
+/*
 SCOREDisplay.prototype.drawHeart = function() {
 	return new Bitmap(HEART, this.container, "s-heart");	
 };
@@ -56,7 +56,7 @@ SCOREDisplay.prototype.drawCoinCount = function() {
 
 */
 
-var scoreScale = 3;
+var scoreScale = 2;
 
 
 
@@ -101,27 +101,45 @@ BitMap.prototype.drawBitmap = function (classname) {
 ///////////////////////////  NUMERAL  ///////////////////////////////
 
 function Numeral(numbers, parent, classname){
-	this.digit = parent.appendChild(elt("div", "classname"));
+	this.digit = parent.appendChild(elt("div", classname));
 	this.digitPixelRows = numbers[0].length;
-	this.numbersSprite = numbers.reduce(this.joinReduce, []);
-	this.numStrip = new Bitmap(this.numbersSprite, this.digit, "s-num-strip");
+	this.numbersSprite = collapse(numbers);
+	console.log(this.numbersSprite);
+	this.numStrip = new BitMap(this.numbersSprite, this.digit, "s-num-strip");
 	this.showDigit(0);
 }
-Numeral.prototype.joinReduce = function(array, elm){
-	return array.push(elm);
+
+Numeral.prototype.newNumberSprite = function(nums){
+	var numStrip = new Array(nums[0]);
+	console.log(nums);
+	console.log(numStrip);
+	nums.forEach(function(elm) {numStrip.concat(elm)} );
+	console.log(numStrip);
+	return numStrip;
 };
+
+function collapse(arr) {
+	var elm = arr[0];
+	if(arr.length <= 1)
+		return elm;
+	else
+		return elm.concat(collapse(arr.slice(1, arr.length)));
+}
+
 Numeral.prototype.showDigit = function(num){
 	var offset = Math.floor(num) % 10;
 	this.digit.scrollTop = offset * this.digitPixelRows * scoreScale;
 };
 
 
+
 ///////////////////////////  NUMERAL2  //////////////////////////////
 
 function Numeral2(numbers, parent, classname){
-	this.pair = parent.appendChild(elt("div", "classname"));
+	this.pair = parent.appendChild(elt("div", classname));
 	this.leftDigit = new Numeral(numbers, this.pair, "s-left-digit");
 	this.rightDigit = new Numeral(numbers, this.pair, "s-right-digit");
+
 }
 
 Numeral2.prototype.showNum = function(num){

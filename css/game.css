@@ -2,15 +2,44 @@
 				  border-spacing: 0;				}
 .scoreing		{   background: rgba(255, 255, 255, 0.6);
     				border-spacing: 0;
-   					position: relative;
-    				margin-top: -440px;
+   					position: fixed;
+    				margin-top: -470px;
     				margin-bottom: 430px;
     				margin-left: 10px;
-    				margin-right: 10px;			}
+    				margin-right: 10px;	
+    				width: 980px;		}
 
-.s-level-symbol 	{  	border-spacing: 0; }
+.s-level-symbol 	{  	border-spacing: 0; 
+						float: left;}
 .s-level-symbol td  {   padding: 0; }    				
-.s-level-symbol .d	{  	background: rgb(0,0,0); }    				
+.s-level-symbol .d	{  	background: rgb(0,0,0); } 
+
+.s-level-count     	{ float:left; }
+
+
+
+
+
+.s-left-digit       { float:left; 
+					  margin:4px;	
+					  max-height: 20px;	
+					  position: relative;
+					  overflow: hidden;}
+
+.s-right-digit       { float:left; 
+					  margin:4px 4px 4px 0;	
+					  max-height: 20px;	
+					  position: relative;
+					  overflow: hidden;}
+
+.s-num-strip 		{  	border-spacing: 0; }
+.s-num-strip td    {   padding: 0; }  
+.s-num-strip .d 	{  background: rgb(0,0,0); } 	
+
+
+
+
+			
 
 .background td	{ padding: 0;						}
 .lava			{ background: rgb(255, 100, 100);	}
@@ -27,4 +56,6 @@
 .game			{ overflow: hidden;
 				  max-width: 1000px;
 				  max-height: 450px;
-				  position: relative;				}				  			   
+				  position: relative;				}
+
+.s-level-symbol { margin: 4px; }				 				  			   
