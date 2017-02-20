@@ -17,6 +17,8 @@ function SCOREDisplay(parent, level) {
 	//this.drawScoreFrame();
 }
 
+
+
 SCOREDisplay.prototype.drawLevelSymbol = function() {
 	return new BitMap(LEV, this.container, "s-level-symbol");
 };
@@ -97,6 +99,7 @@ BitMap.prototype.drawBitmap = function (classname) {
 };
 
 
+	
 
 ///////////////////////////  NUMERAL  ///////////////////////////////
 
