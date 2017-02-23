@@ -2,6 +2,9 @@
 
 function SCOREDisplay(parent, level) {
 	this.container = parent.appendChild(elt("div", "scoreing"));
+	this.levelGroup = this.container.appendChild(elt("div", "level-group"));
+	this.lifeGroup = this.container.appendChild(elt("div", "life-group"));
+	this.coinGroup = this.container.appendChild(elt("div", "coin-group"));
 	this.level = level;
 	
 	var levelSymbol = this.drawLevelSymbol();
@@ -9,10 +12,10 @@ function SCOREDisplay(parent, level) {
 	var heart = this.drawHeart();
 	var xSymbol = this.drawX();
 	var lifeNum = this.drawLifeNum();
-	//var coinSymbol = this.drawCoin();
-	//var coinNum = this.container.appendChild(this.drawCoinNum());
-	//var slashSymbol = this.drawSlash();
-	//var coinCount = this.container.appendChild(this.drawCoinCount());
+	var coinSymbol = this.drawCoin();
+	var coinNum = this.drawCoinNum();
+	var slashSymbol = this.drawSlash();
+	var coinCount = this.drawCoinCount();
 
 	//this.drawScoreFrame();
 }
@@ -20,43 +23,43 @@ function SCOREDisplay(parent, level) {
 
 
 SCOREDisplay.prototype.drawLevelSymbol = function() {
-	return new BitMap(LEV, this.container, "s-level-symbol");
+	return new BitMap(LEV, this.levelGroup, "s-level-symbol");
 };
 
 
 SCOREDisplay.prototype.drawLevelCount = function() {
-	return new Numeral2(NUMERALS, this.container, "s-level-count");
+	return new Numeral2(NUMERALS, this.levelGroup, "s-level-count");
 };
 
 SCOREDisplay.prototype.drawHeart = function() {
-	return new BitMap(HEART, this.container, "s-heart");	
+	return new BitMap(HEART, this.lifeGroup, "s-heart");	
 };
 
 SCOREDisplay.prototype.drawX= function() {
-	return new BitMap(TIMES, this.container, "s-x");
+	return new BitMap(TIMES, this.lifeGroup, "s-x");
 };
 
 SCOREDisplay.prototype.drawLifeNum = function() {
-	return new Numeral2(NUMERALS, this.container, "s-life-num");	
+	return new Numeral2(NUMERALS, this.lifeGroup, "s-life-num");	
 };
-/*
+
 SCOREDisplay.prototype.drawCoin = function() {
-	return new Bitmap(COIN, this.container, "s-coin");
+	return new BitMap(COIN, this.coinGroup, "s-coin");
 };
 
 SCOREDisplay.prototype.drawCoinNum = function() {
-	return new Numeral2(NUMERALS, "s-coun-num");
-};
+	return new Numeral2(NUMERALS, this.coinGroup, "s-coin-num");
+}; 
 
 SCOREDisplay.prototype.drawSlash = function() {
-	return new Bitmap(OVER, this.container, "s-slash");
+	return new BitMap(OVER, this.coinGroup, "s-slash");
 };
 
 SCOREDisplay.prototype.drawCoinCount = function() {
-	return new Numeral2(NUMERALS, "s-coin-count");
+	return new Numeral2(NUMERALS, this.coinGroup, "s-coin-count");
 };
 
-*/
+
 
 var scoreScale = 2;
 
@@ -64,10 +67,10 @@ var scoreScale = 2;
 
 ///////////////////////////  BITMAP  ///////////////////////////////
 function BitMap(sbmap, parent, classname) {
-	console.log(typeof parent);
-	console.log(typeof sbmap);
-	sbmap.forEach(function (row) {
-		console.log (typeof row)});
+	//console.log(typeof parent);
+	//console.log(typeof sbmap);
+	//sbmap.forEach(function (row) {
+	//	console.log (typeof row)});
 	this.sfont = sbmap;
 	this.bmap = parent.appendChild(this.drawBitmap(classname));
 	
@@ -85,7 +88,7 @@ BitMap.prototype.drawBitmap = function (classname) {
 	var table = elt("table", classname);
 	table.style.width = width * scoreScale + "px";
 	this.sfont.forEach(function(row){
-		console.log (typeof row)
+	//	console.log (typeof row)
 		rowElt = table.appendChild(elt("tr"));
 		rowElt.style.height = scoreScale + "px";
 		for (var ch = 0; ch < width; ch++) {
@@ -108,17 +111,17 @@ function Numeral(numbers, parent, classname){
 	this.digitPixelRows = numbers[0].length;
 	this.digit.style.maxHeight = this.digitPixelRows * scoreScale + "px";
 	this.numbersSprite = collapse(numbers);
-	console.log(this.numbersSprite);
+	//console.log(this.numbersSprite);
 	this.numStrip = new BitMap(this.numbersSprite, this.digit, "s-num-strip");
 	this.showDigit(0);
 }
 
 Numeral.prototype.newNumberSprite = function(nums){
 	var numStrip = new Array(nums[0]);
-	console.log(nums);
-	console.log(numStrip);
+	//console.log(nums);
+	//console.log(numStrip);
 	nums.forEach(function(elm) {numStrip.concat(elm)} );
-	console.log(numStrip);
+	//console.log(numStrip);
 	return numStrip;
 };
 

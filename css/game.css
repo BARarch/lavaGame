@@ -3,18 +3,20 @@
 .scoreing		{   background: rgba(255, 255, 255, 0.6);
     				border-spacing: 0;
    					position: fixed;
-    				margin-top: -470px;
+    				margin-top: -480px;
     				margin-bottom: 430px;
     				margin-left: 10px;
     				margin-right: 10px;	
     				width: 980px;		}
 
-.s-level-symbol 	{  	border-spacing: 0; 
-						float: left;}
-.s-level-symbol td  {   padding: 0; }    				
-.s-level-symbol .d	{  	background: rgb(0,0,0); } 
+/* -------- Scoring Groups  -------*/
+.level-group		{ float:left; }
+.life-group			{ float:left;
+					  margin-left: 40px; }
+.coin-group			{ float:right; } 
 
-.s-level-count     	{ float:left; }
+
+/* ---------    Digits    ---------*/
 .s-left-digit       { float:left; 
 					  margin:4px;	
 					  /*max-height: 20px;*/	
@@ -29,8 +31,20 @@
 
 .s-num-strip 		{  	border-spacing: 0; }
 .s-num-strip td    	{   padding: 0; }  
-.s-num-strip .d 	{  background: rgb(0,0,0); } 	
+.s-num-strip .d 	{  background: rgb(0,0,0); } 
 
+/* ---------  Level Group  ---------*/
+.s-level-symbol 	{  	border-spacing: 0; 
+						float: left;
+					    margin: 4px;}
+.s-level-symbol td  {   padding: 0; }    				
+.s-level-symbol .d	{  	background: rgb(0,0,0); } 
+
+.s-level-count     	{ float:left; }
+
+
+	
+/* ---------  Life Group  ---------*/
 .s-heart			{  float:left; 
 		 			  	border-spacing: 0;
 						margin: 4px; }
@@ -47,8 +61,26 @@
 .s-life-num     	{ float:left; }
 
 
+/* ---------  Coin Group  ---------*/
+.s-coin				{  float:left; 
+		 			  	border-spacing: 0;
+						margin: 4px; }
+.s-coin td    		{   padding: 0; }  
+.s-coin .g 			{  background: rgb(205,205,95); }
+.s-coin .w 			{  background: rgb(255,255,255); }
+.s-coin .b 			{  background: rgb(0,0,0); }
 
 
+.s-slash			{  float:left; 
+						margin: 4px;
+					 	border-spacing: 0; }
+.s-slash td    		{   padding: 0; }  
+.s-slash .x 		{  background: rgb(0,0,0); }
+
+.s-coin-num			{ float:left; }
+.s-coin-count		{ float:left; }
+
+/* ---------  Main Selectors  ---------*/
 .background td	{ padding: 0;						}
 .lava			{ background: rgb(255, 100, 100);	}
 .wall			{ background: white;				}
@@ -66,4 +98,4 @@
 				  max-height: 450px;
 				  position: relative;				}
 
-.s-level-symbol { margin: 4px; }				 				  			   
+			 				  			   
