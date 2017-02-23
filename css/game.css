@@ -15,11 +15,6 @@
 .s-level-symbol .d	{  	background: rgb(0,0,0); } 
 
 .s-level-count     	{ float:left; }
-
-
-
-
-
 .s-left-digit       { float:left; 
 					  margin:4px;	
 					  /*max-height: 20px;*/	
@@ -33,10 +28,23 @@
 					  overflow: hidden;}
 
 .s-num-strip 		{  	border-spacing: 0; }
-.s-num-strip td    {   padding: 0; }  
+.s-num-strip td    	{   padding: 0; }  
 .s-num-strip .d 	{  background: rgb(0,0,0); } 	
 
+.s-heart			{  float:left; 
+		 			  	border-spacing: 0;
+						margin: 4px; }
+.s-heart td    		{   padding: 0; }  
+.s-heart .r 		{  background: rgb(255,5,5); }
+.s-heart .w 		{  background: rgb(255,255,255); }
 
+.s-x				{  float:left; 
+						margin: 4px;
+					 	border-spacing: 0; }
+.s-x td    			{   padding: 0; }  
+.s-x .x 			{  background: rgb(0,0,0); }
+
+.s-life-num     	{ float:left; }
 
 
 

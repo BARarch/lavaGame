@@ -6,9 +6,9 @@ function SCOREDisplay(parent, level) {
 	
 	var levelSymbol = this.drawLevelSymbol();
 	var levelNum = this.drawLevelCount();
-	//var heart = this.drawHeart();
-	//var xSymbol = this.drawX();
-	//var lifeNum = this.container.appendChild(this.drawLifeNum());
+	var heart = this.drawHeart();
+	var xSymbol = this.drawX();
+	var lifeNum = this.drawLifeNum();
 	//var coinSymbol = this.drawCoin();
 	//var coinNum = this.container.appendChild(this.drawCoinNum());
 	//var slashSymbol = this.drawSlash();
@@ -27,19 +27,19 @@ SCOREDisplay.prototype.drawLevelSymbol = function() {
 SCOREDisplay.prototype.drawLevelCount = function() {
 	return new Numeral2(NUMERALS, this.container, "s-level-count");
 };
-/*
+
 SCOREDisplay.prototype.drawHeart = function() {
-	return new Bitmap(HEART, this.container, "s-heart");	
+	return new BitMap(HEART, this.container, "s-heart");	
 };
 
 SCOREDisplay.prototype.drawX= function() {
-	return new Bitmap(TIMES, this.container, "s-x");
+	return new BitMap(TIMES, this.container, "s-x");
 };
 
 SCOREDisplay.prototype.drawLifeNum = function() {
-	return new Numeral2(NUMERALS, "s-life-num");	
+	return new Numeral2(NUMERALS, this.container, "s-life-num");	
 };
-
+/*
 SCOREDisplay.prototype.drawCoin = function() {
 	return new Bitmap(COIN, this.container, "s-coin");
 };
