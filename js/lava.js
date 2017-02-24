@@ -24,6 +24,9 @@ function Level(plan) {
 	this.height = plan.length;
 	this.grid = [];
 	this.actors = [];
+	this.totalCoins = 0;
+	this.collectedCoins = 0;
+	this.oldCoinNo = 0;
 
 
 	
@@ -32,9 +35,11 @@ function Level(plan) {
 		for(var x = 0; x < this.width; x++){
 			var ch = line[x], fieldType = null;
 			var Actor = actorChars[ch];
-			if(Actor)
+			if(Actor) {
 				this.actors.push(new Actor(new Vector(x, y), ch));
-			else if (ch == "x")
+				if(Actor == Coin)
+					this.totalCoins++;
+			}else if (ch == "x")
 				fieldType = "wall";
 			else if (ch == "!")
 				fieldType = "lava";
@@ -48,6 +53,16 @@ function Level(plan) {
 	})[0];
 	this.status = this.finishDelay = null;
 }
+
+// Check to see if number of collected coins has changed
+Level.prototype.foundCoin = function() {
+	if(this.collectedCoins != this.oldCoinNo){
+		this.oldCoinNo = this.collectedCoins; 
+		return true;
+	}else {
+		return false;
+	}
+};
 
 // The isFinnished Function
 Level.prototype.isFinished = function() {
@@ -108,6 +123,7 @@ Level.prototype.playerTouched = function(type, actor) {
 		this.status = "lost";
 		this.finishDelay = 1;
 	} else if (type == "coin") {
+		this.collectedCoins++;
 		this.actors = this.actors.filter(function(other) {
 			return other != actor;
 		});

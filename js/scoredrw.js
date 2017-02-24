@@ -6,21 +6,45 @@ function SCOREDisplay(parent, level) {
 	this.lifeGroup = this.container.appendChild(elt("div", "life-group"));
 	this.coinGroup = this.container.appendChild(elt("div", "coin-group"));
 	this.level = level;
+
+	this.levelNo = 0;
+	this.lives = 0;
+	this.coins = 0;
+	this.totalCoins = 0;
 	
 	var levelSymbol = this.drawLevelSymbol();
-	var levelNum = this.drawLevelCount();
+	this.levelNum = this.drawLevelCount();
 	var heart = this.drawHeart();
 	var xSymbol = this.drawX();
-	var lifeNum = this.drawLifeNum();
+	this.lifeNum = this.drawLifeNum();
 	var coinSymbol = this.drawCoin();
-	var coinNum = this.drawCoinNum();
+	this.coinNum = this.drawCoinNum();
 	var slashSymbol = this.drawSlash();
-	var coinCount = this.drawCoinCount();
+	this.coinCount = this.drawCoinCount();
 
 	//this.drawScoreFrame();
+	//levelNum.showNum(12);
 }
 
+SCOREDisplay.prototype.setLevelNum = function(num) {
+	this.levelNo = num
+	this.levelNum.showNum(num);
+};
 
+SCOREDisplay.prototype.setLifeNum = function(num) {
+	this.lives = num
+	this.lifeNum.showNum(num);
+};
+
+SCOREDisplay.prototype.setCoinNum = function(num) {
+	this.coins = num
+	this.coinNum.showNum(num);
+};
+
+SCOREDisplay.prototype.setCoinCount = function(num) {
+	this.totalCoins = num
+	this.coinCount.showNum(num);
+};
 
 SCOREDisplay.prototype.drawLevelSymbol = function() {
 	return new BitMap(LEV, this.levelGroup, "s-level-symbol");
@@ -58,6 +82,7 @@ SCOREDisplay.prototype.drawSlash = function() {
 SCOREDisplay.prototype.drawCoinCount = function() {
 	return new Numeral2(NUMERALS, this.coinGroup, "s-coin-count");
 };
+
 
 
 

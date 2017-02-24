@@ -78,14 +78,19 @@ var pause = trackPause(pauseCode);
 var gamePaused = pause.paused;
 
 // runLevel
-function runLevel(level, Display, Score, andThen) {
+function runLevel(level, Display, Score, levelNum, lifeNum, andThen) {
 	var display = new Display(document.body, level);
 	var score = new Score(display.wrap, level);
+	score.setLevelNum(levelNum);
+	score.setLifeNum(lifeNum);
+	score.setCoinCount(level.totalCoins);
 	runAnimation(function(step) {
 		
 		//console.log("State of Pause:", pause);
 		if (!gamePaused()) {	
 			level.animate(step, arrows);
+			if(level.foundCoin())
+				score.setCoinNum(level.collectedCoins)
 			display.drawFrame(step);
 		}
 		
@@ -104,7 +109,7 @@ function runGame(plans, Display, Score) {
 	var initLives = 2;
 	function startLevel(n, lives) {
 		console.log("qp x0" + lives.toString());
-		runLevel(new Level(plans[n]), Display, Score, function(status) {
+		runLevel(new Level(plans[n]), Display, Score, n + 1, lives, function(status) {
 			if (status == "lost") {
 				if (lives > 0)
 					startLevel(n, --lives);	
