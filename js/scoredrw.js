@@ -27,22 +27,22 @@ function SCOREDisplay(parent, level) {
 }
 
 SCOREDisplay.prototype.setLevelNum = function(num) {
-	this.levelNo = num
+	this.levelNo = num;
 	this.levelNum.showNum(num);
 };
 
 SCOREDisplay.prototype.setLifeNum = function(num) {
-	this.lives = num
+	this.lives = num;
 	this.lifeNum.showNum(num);
 };
 
 SCOREDisplay.prototype.setCoinNum = function(num) {
-	this.coins = num
+	this.coins = num;
 	this.coinNum.showNum(num);
 };
 
 SCOREDisplay.prototype.setCoinCount = function(num) {
-	this.totalCoins = num
+	this.totalCoins = num;
 	this.coinCount.showNum(num);
 };
 
@@ -86,7 +86,7 @@ SCOREDisplay.prototype.drawCoinCount = function() {
 
 
 
-var scoreScale = 2;
+var scoreScale = 1;
 
 
 
