@@ -81,6 +81,8 @@ var gamePaused = pause.paused;
 function runLevel(level, Display, Score, levelNum, lifeNum, andThen) {
 	var display = new Display(document.body, level);
 	var score = new Score(display.wrap, level);
+	var pause3 = false;
+	var gameOver2 = false 
 	score.setLevelNum(levelNum);
 	score.setLifeNum(lifeNum);
 	score.setCoinCount(level.totalCoins);
@@ -91,7 +93,21 @@ function runLevel(level, Display, Score, levelNum, lifeNum, andThen) {
 			level.animate(step, arrows);
 			if(level.foundCoin())
 				score.setCoinNum(level.collectedCoins)
+			if(pause3) {
+				score.turnOffPause();
+				pause3 = false;
+			}
 			display.drawFrame(step);
+		}else{
+			if(!pause3){
+				score.turnOnPause();
+				pause3 = true;
+			}
+		}
+
+		if(level.status == "lost" && lifeNum == 0 && !gameOver2) {
+			score.turnOnGameOver();
+			gameOver2 = true;
 		}
 		
 		if (level.isFinished()) {
