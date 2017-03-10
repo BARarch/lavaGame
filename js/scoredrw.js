@@ -4,6 +4,9 @@ function SCOREDisplay(parent, level) {
 	this.container = parent.appendChild(elt("div", "scoreing"));
 	this.levelGroup = this.container.appendChild(elt("div", "level-group"));
 	this.lifeGroup = this.container.appendChild(elt("div", "life-group"));
+	this.pausedGroup = this.container.appendChild(elt("div", "paused-group"));
+	this.gameOverGroup = this.container.appendChild(elt("div", "game-over-group"));
+
 	this.coinGroup = this.container.appendChild(elt("div", "coin-group"));
 	this.level = level;
 
@@ -22,6 +25,11 @@ function SCOREDisplay(parent, level) {
 	var slashSymbol = this.drawSlash();
 	this.coinCount = this.drawCoinCount();
 
+	this.gameOver = this.drawGameOver();
+	this.paused =  this.drawPaused();
+	this.turnOffPause();
+	this.turnOffGameOver();
+	
 	//this.drawScoreFrame();
 	//levelNum.showNum(12);
 }
@@ -45,6 +53,23 @@ SCOREDisplay.prototype.setCoinCount = function(num) {
 	this.totalCoins = num;
 	this.coinCount.showNum(num);
 };
+
+SCOREDisplay.prototype.turnOnPause = function() {
+	this.pausedGroup.style.display = "block";
+};
+
+SCOREDisplay.prototype.turnOffPause = function() {
+	this.pausedGroup.style.display = "none";
+};
+
+SCOREDisplay.prototype.turnOnGameOver = function() {
+	this.gameOverGroup.style.display = "block";
+};
+
+SCOREDisplay.prototype.turnOffGameOver = function() {
+	this.gameOverGroup.style.display = "none";
+};
+
 
 SCOREDisplay.prototype.drawLevelSymbol = function() {
 	return new BitMap(LEV, this.levelGroup, "s-level-symbol");
@@ -81,6 +106,14 @@ SCOREDisplay.prototype.drawSlash = function() {
 
 SCOREDisplay.prototype.drawCoinCount = function() {
 	return new Numeral2(NUMERALS, this.coinGroup, "s-coin-count");
+};
+
+SCOREDisplay.prototype.drawGameOver = function () {
+	return new BitMap(GAME_OVER, this.gameOverGroup ,"s-game-over");
+};
+
+SCOREDisplay.prototype.drawPaused = function() {
+	return new BitMap(PAUSED, this.pausedGroup, "s-paused");
 };
 
 

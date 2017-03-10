@@ -13,6 +13,10 @@
 .level-group		{ float:left; }
 .life-group			{ float:left;
 					  margin-left: 40px; }
+.game-over-group	{ float:left;
+					  margin-left: 40px; }
+.paused-group		{ float:left;
+					  margin-left: 40px; }
 .coin-group			{ float:right; } 
 
 
@@ -32,7 +36,20 @@
 
 .s-num-strip 		{  	border-spacing: 0; }
 .s-num-strip td    	{   padding: 0; }  
-.s-num-strip .d 	{  background: rgb(0,0,0); } 
+.s-num-strip .d 	{  background: rgb(0,0,0); }
+
+/* ---   Paused and Game Over Sign    ---*/
+.s-paused 			{  	border-spacing: 0; 
+						margin: 4px;}
+.s-paused td    	{   padding: 0; }  
+.s-paused .d 		{  background: rgb(0,0,0); } 
+
+.s-game-over 		{  	border-spacing: 0;
+						margin: 4px; }
+.s-game-over td    	{   padding: 0; }  
+.s-game-over .d 	{  background: rgb(0,0,0); }
+
+
 
 /* ---------  Level Group  ---------*/
 .s-level-symbol 	{  	border-spacing: 0; 
