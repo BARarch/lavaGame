@@ -80,7 +80,7 @@ var gamePaused = pause.paused;
 // runLevel
 function runLevel(level, Display, Score, levelNum, lifeNum, andThen) {
 	var display = new Display(document.body, level);
-	var score = new Score(display.wrap, level);
+	var score = new Score(display.wrap, display.level.grid.length*scale, level);
 	var pause3 = false;
 	var gameOver2 = false 
 	score.setLevelNum(levelNum);

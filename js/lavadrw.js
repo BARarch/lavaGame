@@ -30,6 +30,7 @@ DOMDisplay.prototype.drawBackground = function() {
 			rowElt.appendChild(elt("td", type));
 		});
 	});
+	
 	return table;
 };
 

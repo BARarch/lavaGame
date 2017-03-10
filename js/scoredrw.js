@@ -1,6 +1,6 @@
 ///////////////////////////  SCORE Display  ////////?/////////////////////
 
-function SCOREDisplay(parent, level) {
+function SCOREDisplay(parent, tableHieght, level) {
 	this.container = parent.appendChild(elt("div", "scoreing"));
 	this.levelGroup = this.container.appendChild(elt("div", "level-group"));
 	this.lifeGroup = this.container.appendChild(elt("div", "life-group"));
@@ -30,6 +30,8 @@ function SCOREDisplay(parent, level) {
 	this.turnOffPause();
 	this.turnOffGameOver();
 	
+	this.container.style.marginTop =  -tableHieght + 10 + "px";
+
 	//this.drawScoreFrame();
 	//levelNum.showNum(12);
 }
